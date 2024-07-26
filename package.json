@@ -4,13 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start-prod": "NODE_ENV=production node src/Consumer.js",
+    "start-dev": "node src/Consumer.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint ./src"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "amqplib": "^0.10.3",
+    "amqplib": "^0.10.4",
     "auto-bind": "^5.0.1",
     "dotenv": "^16.3.1",
     "nodemailer": "^6.9.7",

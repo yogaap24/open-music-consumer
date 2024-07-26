@@ -1,3 +1,5 @@
+const fs = require("fs");
+
 class Listener {
   constructor(playlistsService, mailSender) {
     this._playlistsService = playlistsService;
@@ -21,9 +23,15 @@ class Listener {
         playlist.name,
         JSON.stringify({ playlist }),
       );
-      console.log(result);
+      fs.appendFileSync(
+        __dirname + "/../src/logs/info.log",
+        `${new Date().toLocaleString()} [Listener] Success sending email to ${targetEmail} about playlist ${playlistId}\n`,
+      );
     } catch (error) {
-      console.error(error);
+      fs.appendFileSync(
+        __dirname + "/../src/logs/error.log",
+        `${new Date().toLocaleString()} [Listener] Error ${error}\n`,
+      );
     }
   }
 }
